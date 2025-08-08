@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technician Dashboard - Mobile Stroke Unit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="#2563eb"/>
+                        <circle cx="12" cy="12" r="3" fill="#ffffff"/>
+                    </svg>
+                    <span>MSU System</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2"/>
+                        <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    Patients
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2"/>
+                        <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    Lab Results
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span>{{ user.first_name.0 }}{{ user.last_name.0 }}</span>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name">{{ user.get_full_name }}</span>
+                        <span class="user-role">Lab Technician</span>
+                    </div>
+                </div>
+                <a href="{% url 'logout' %}" class="logout-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-content">
+                    <h1>Lab Results Entry</h1>
+                    <p>Enter and manage patient laboratory test results</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="showPatientSearch()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Find Patient
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-grid">
+                <!-- Patient Selection Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Select Patient</h3>
+                        <span class="badge badge-info">Step 1</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="search-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <input type="text" placeholder="Search by patient name or ID..." id="patientSearch">
+                        </div>
+                        
+                        <div class="patient-list" id="patientList">
+                            <div class="patient-item" onclick="selectPatient(1, 'John Doe', '65', 'M')">
+                                <div class="patient-info">
+                                    <span class="patient-name">John Doe</span>
+                                    <span class="patient-details">ID: MSU001 • Age: 65 • Male</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge status-pending">Lab Pending</span>
+                                </div>
+                            </div>
+                            
+                            <div class="patient-item" onclick="selectPatient(2, 'Jane Smith', '72', 'F')">
+                                <div class="patient-info">
+                                    <span class="patient-name">Jane Smith</span>
+                                    <span class="patient-details">ID: MSU002 • Age: 72 • Female</span>
+                                </div>
+                                <div class="patient-status">
+                                    <span class="status-badge status-urgent">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lab Results Entry Form -->
+                <div class="card" id="labResultsCard" style="display: none;">
+                    <div class="card-header">
+                        <h3>Lab Results Entry</h3>
+                        <span class="badge badge-success">Step 2</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="selected-patient" id="selectedPatientInfo">
+                            <!-- Patient info will be populated here -->
+                        </div>
+
+                        <form class="lab-form" method="post">
+                            {% csrf_token %}
+                            
+                            <div class="form-section">
+                                <h4>Complete Blood Count (CBC)</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cbc_status">CBC Status</label>
+                                        <select name="cbc_status" id="cbc_status" class="form-select">
+                                            <option value="">Select status...</option>
+                                            <option value="normal">Normal</option>
+                                            <option value="abnormal">Abnormal</option>
+                                            <option value="pending">Pending</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h4>Basic Metabolic Panel (BMP)</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="bmp_status">BMP Status</label>
+                                        <select name="bmp_status" id="bmp_status" class="form-select">
+                                            <option value="">Select status...</option>
+                                            <option value="normal">Normal</option>
+                                            <option value="abnormal">Abnormal</option>
+                                            <option value="pending">Pending</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="glucose_level">Glucose Level (mg/dL)</label>
+                                        <input type="number" name="glucose_level" id="glucose_level" 
+                                               class="form-input" placeholder="Enter glucose level">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h4>Coagulation Studies</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="coagulation_status">Coagulation Status</label>
+                                        <select name="coagulation_status" id="coagulation_status" class="form-select">
+                                            <option value="">Select status...</option>
+                                            <option value="normal">Normal</option>
+                                            <option value="abnormal">Abnormal</option>
+                                            <option value="pending">Pending</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="clearForm()">Clear</button>
+                                <button type="submit" class="btn-primary">
+                                    Save Lab Results
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon success">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="20,6 9,17 4,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <span class="activity-text">Lab results entered for John Doe</span>
+                                    <span class="activity-time">2 minutes ago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon info">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                                        <line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="12" y1="8" x2="12.01" y2="8" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="activity-content">
+                                    <span class="activity-text">CBC pending for Jane Smith</span>
+                                    <span class="activity-time">15 minutes ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function selectPatient(id, name, age, sex) {
+            // Show the lab results card
+            document.getElementById('labResultsCard').style.display = 'block';
+            
+            // Populate patient info
+            const patientInfo = document.getElementById('selectedPatientInfo');
+            patientInfo.innerHTML = `
+                <div class="patient-card">
+                    <div class="patient-avatar">
+                        <span>${name.split(' ').map(n => n[0]).join('')}</span>
+                    </div>
+                    <div class="patient-details">
+                        <h4>${name}</h4>
+                        <p>Age: ${age} • Sex: ${sex} • ID: MSU00${id}</p>
+                    </div>
+                </div>
+            `;
+            
+            // Scroll to the form
+            document.getElementById('labResultsCard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearForm() {
+            document.querySelector('.lab-form').reset();
+        }
+
+        function showPatientSearch() {
+            document.getElementById('patientSearch').focus();
+        }
+
+        // Search functionality
+        document.getElementById('patientSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const patientItems = document.querySelectorAll('.patient-item');
+            
+            patientItems.forEach(item => {
+                const patientName = item.querySelector('.patient-name').textContent.toLowerCase();
+                if (patientName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
