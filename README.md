@@ -1,30 +1,84 @@
-# Django ui improvements
+# 🧠 NeuroFlow – Advanced Neurological Care Management Platform
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+**NeuroFlow** is a comprehensive stroke care coordination system designed for healthcare professionals, enabling efficient communication, patient tracking, and real-time decision-making in neurological care.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/enockos-projects/v0-django-ui-improvements)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/hKmXEJ42ima)
+## 🚀 Overview
 
-## Overview
+NeuroFlow streamlines stroke care by providing **role-based dashboards** for technicians and neurologists, offering **real-time patient data**, **lab result management**, and **interactive analytics** in one unified platform.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## ✨ Features
 
-## Deployment
+* 🏥 **Role-based Dashboards** – Separate, secure interfaces for **technicians** and **doctors** with tailored workflows.
+* 📊 **Real-time Analytics** – Live monitoring of performance metrics and patient outcomes.
+* 🧪 **Lab Management** – Track blood work, diagnostic tests, and results with timestamps.
+* 📈 **Interactive Charts** – Custom-built visualizations for actionable insights.
+* 📱 **Responsive Design** – Optimized for desktop, tablet, and mobile devices.
+* 🔐 **Secure Access** – Role-based authentication and HIPAA-conscious data handling.
 
-Your project is live at:
+## 🎥 Demo
 
-**[https://vercel.com/enockos-projects/v0-django-ui-improvements](https://vercel.com/enockos-projects/v0-django-ui-improvements)**
+**Technician Login:**
 
-## Build your app
+```
+Username: technician  
+Password: demo
+```
 
-Continue building your app on:
+**Doctor Login:**
 
-**[https://v0.dev/chat/projects/hKmXEJ42ima](https://v0.dev/chat/projects/hKmXEJ42ima)**
+```
+Username: doctor  
+Password: demo
+```
 
-## How It Works
+## 🛠 Tech Stack
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+* **Frontend Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **Charts:** Custom chart components built with React
+
+## 📦 Installation & Setup
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/enocko/neuroflow-healthcare-platform.git
+cd neuroflow-healthcare-platform
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+The app will be available at:
+
+```
+http://localhost:3000
+```
+
+## 📂 Project Structure
+
+```
+neuroflow/
+ ├── components/       # Reusable UI components
+ ├── pages/            # App pages & routing
+ ├── styles/           # Global and Tailwind styles
+ ├── public/           # Static assets
+ ├── utils/            # Helper functions
+ ├── README.md         # Project documentation
+ └── package.json      # Dependencies & scripts
+```
+
+## 🚀 Future Enhancements
+
+* 🔐 Authentication system using NextAuth.js for secure role-based access
+* 🗄 Database integration with Supabase/PostgreSQL for persistent data storage
+* 📡 Real-time updates via WebSockets for instant patient status changes
+* 📄 PDF report generation for medical summaries and lab results
+* 📱 Mobile app version using React Native for cross-platform access
+
