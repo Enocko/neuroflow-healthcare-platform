@@ -1,49 +1,30 @@
-# 🧠 NeuroFlow – Advanced Neurological Care Management Platform
+# Django ui improvements
 
-**NeuroFlow** is a comprehensive stroke care coordination system designed for healthcare professionals, enabling efficient communication, patient tracking, and real-time decision-making in neurological care.
+*Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
-## 🚀 Overview
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/enockos-projects/v0-django-ui-improvements)
+[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/hKmXEJ42ima)
 
-NeuroFlow streamlines stroke care by providing **role-based dashboards** for technicians and neurologists, offering **real-time patient data**, **lab result management**, and **interactive analytics** in one unified platform.
+## Overview
 
-## ✨ Features
+This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
+Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
 
-* 🏥 **Role-based Dashboards** – Separate, secure interfaces for **technicians** and **doctors** with tailored workflows.
-* 📊 **Real-time Analytics** – Live monitoring of performance metrics and patient outcomes.
-* 🧪 **Lab Management** – Track blood work, diagnostic tests, and results with timestamps.
-* 📈 **Interactive Charts** – Custom-built visualizations for actionable insights.
-* 📱 **Responsive Design** – Optimized for desktop, tablet, and mobile devices.
-* 🔐 **Secure Access** – Role-based authentication and HIPAA-conscious data handling.
+## Deployment
 
-## 🎥 Demo
+Your project is live at:
 
-**Technician Login:**
+**[https://vercel.com/enockos-projects/v0-django-ui-improvements](https://vercel.com/enockos-projects/v0-django-ui-improvements)**
 
-```
-Username: technician  
-Password: demo
-```
+## Build your app
 
-**Doctor Login:**
+Continue building your app on:
 
-```
-Username: doctor  
-Password: demo
-```
+**[https://v0.dev/chat/projects/hKmXEJ42ima](https://v0.dev/chat/projects/hKmXEJ42ima)**
 
-## 🛠 Tech Stack
+## How It Works
 
-* **Frontend Framework:** [Next.js 14](https://nextjs.org/) (App Router)
-* **Language:** [TypeScript](https://www.typescriptlang.org/)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **Icons:** [Lucide React](https://lucide.dev/)
-* **Charts:** Custom chart components built with React
-
-## 🚀 Future Enhancements
-
-* 🔐 Authentication system using NextAuth.js for secure role-based access
-* 🗄 Database integration with Supabase/PostgreSQL for persistent data storage
-* 📡 Real-time updates via WebSockets for instant patient status changes
-* 📄 PDF report generation for medical summaries and lab results
-* 📱 Mobile app version using React Native for cross-platform access
-
+1. Create and modify your project using [v0.dev](https://v0.dev)
+2. Deploy your chats from the v0 interface
+3. Changes are automatically pushed to this repository
+4. Vercel deploys the latest version from this repository
