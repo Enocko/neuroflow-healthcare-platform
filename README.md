@@ -39,41 +39,6 @@ Password: demo
 * **Icons:** [Lucide React](https://lucide.dev/)
 * **Charts:** Custom chart components built with React
 
-## 📦 Installation & Setup
-
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/enocko/neuroflow-healthcare-platform.git
-cd neuroflow-healthcare-platform
-npm install
-```
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-The app will be available at:
-
-```
-http://localhost:3000
-```
-
-## 📂 Project Structure
-
-```
-neuroflow/
- ├── components/       # Reusable UI components
- ├── pages/            # App pages & routing
- ├── styles/           # Global and Tailwind styles
- ├── public/           # Static assets
- ├── utils/            # Helper functions
- ├── README.md         # Project documentation
- └── package.json      # Dependencies & scripts
-```
-
 ## 🚀 Future Enhancements
 
 * 🔐 Authentication system using NextAuth.js for secure role-based access
